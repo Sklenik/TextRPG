@@ -1,4 +1,5 @@
 def Game():
-    print("Welcome brave adventurer!")
+    print("Hello World")
 
-Game()
+if __name__ == "__main__":
+    Game()
