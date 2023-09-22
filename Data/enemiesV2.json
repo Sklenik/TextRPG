@@ -1,0 +1,48 @@
+{
+    "creature": {
+        "goblin": {
+            "useOnlyDefaultSizes": true,
+            "useDefaultSizes": true,
+            "sizes": [],
+            "translucent": false,
+            "useOnlyDefaultColors": true,
+            "useDefaultColors": true,
+            "colors": [],
+            "damageRange": 1,
+            "hpRange": 2,
+            "useOnlyDefaultLines": false,
+            "useDefaultLines": true,
+            "classesAllowed": true,
+            "classes": {
+                "thief": {
+                    "damageBonus": "0",
+                    "hpBonus": "0",
+                    "names": [],
+                    "retaliateLines": [],
+                    "attackLines": [],
+                    "missLines": [],
+                    "killLines": []
+                }
+            }
+        },
+        "vampire": {},
+        "skřítek Filípek": {},
+        "centaur": {}
+    },
+    "animal": [
+        "spider",
+        "boar",
+        "rat"
+    ],
+    "undead": [
+        "zombie",
+        "ghost",
+        "wraith",
+        "skeleton"
+    ],
+    "elemental": [
+        "golem",
+        "spirit",
+        "djinn"
+    ]
+}
