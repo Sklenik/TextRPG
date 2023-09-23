@@ -1,5 +1,4 @@
-def Game():
-    print("Hello World")
+from Library import game
 
 if __name__ == "__main__":
-    Game()
+    game.Play()
