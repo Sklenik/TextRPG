@@ -1,8 +1,14 @@
 # Documentation (rename this header to project name later)
 
+ - The following table displays the version, description and date of the update
+ - The version format is currently {major}.{minor}.{patch}-{prerelease}-{prerelease version}
+###
+
    Version    |      Description     |    Date
 --------------|----------------------|------------
  1.0.0-Alfa-1 | Project Alfa Release | 24. 9. 2023
+
+
 
 ## Game mechanics
 ### TBD
