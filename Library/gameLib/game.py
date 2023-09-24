@@ -1,5 +1,5 @@
-import utils
-import entities
+import Library.utilsLib.utils as utils
+import Library.entitiesLib.entities as entities
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json

@@ -1,5 +1,5 @@
 import random
-import jsonHelper
+import Library.jsonHelperLib.jsonHelper as jsonHelper
 
 # HUDs
 playerHUD = "PLAYER:[%s] HP:[%d] SCORE:[%d]"

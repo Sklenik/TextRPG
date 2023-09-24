@@ -1,4 +1,4 @@
-from Library import game
+from Library.gameLib import game
 
 if __name__ == "__main__":
     game.play()
