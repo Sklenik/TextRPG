@@ -1,5 +1,5 @@
 import json
-import Library.utilsLib.utils as utils
+from Library import utils
 path = "./Data/JSON/"
 
 # default.json procedures

@@ -1,6 +1,6 @@
 import sys
 import random
-import Library.jsonHelperLib.jsonHelper as jsonHelper
+from Library import jsonHelper
 
 # TODO Clean up this mess, utils.py should not be so flooded
 
