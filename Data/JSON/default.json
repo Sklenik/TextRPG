@@ -1,0 +1,29 @@
+{
+    "entityTypes": [
+        "",
+        "creature"
+    ],
+    "sizes": [
+        "tiny",
+        "small",
+        "",
+        "big",
+        "huge",
+        "gargantuan"
+    ],
+    "colors": [
+        "black",
+        "brown",
+        "red",
+        "orange",
+        "yellow",
+        "green",
+        "lime",
+        "turqoise",
+        "blue",
+        "purple",
+        "pink",
+        "pink and pointy",
+        "white"
+    ]
+}
