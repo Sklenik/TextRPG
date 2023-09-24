@@ -1,2 +1,0 @@
-# Docu Init
-This is the start of the documentation process. In this folder there will be detailed sections containing specific info about selected game mechanics and processes. Maybe there will even be dev documentation. Who knows.
