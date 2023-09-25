@@ -43,8 +43,6 @@ def handleItem(player, enemy): # TODO in version after handleMagic is finnisher
     # TODO make enemies drop collectable loot -> will there be an encumbrance or a backpack ? I dont know yet
     pass
 
-# TODO split the handlers into mutliple files so this file is not flooded?
-
 def handleRandom(player, enemy): # TODO in version after handleItem is finnished and tested
     pass
 
