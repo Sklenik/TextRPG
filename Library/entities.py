@@ -62,7 +62,7 @@ def assignEntityHp(entity):
     sizes = jsonHelper.getSizes();
     sizes.reverse()
     # TODO maybe make sizes in the JSON as json objects, containing hp info?
-    entity.hp = len(sizes) - sizes.index(entity.size) #FIXME object of type nonetype has no len
+    entity.hp = len(sizes) - sizes.index(entity.size)
 
 # Creature
 def createCreature():
