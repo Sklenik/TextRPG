@@ -1,21 +1,21 @@
 import json
-from Library import utils
-path = "./Data/JSON/"
+from . import utils
+path = "Data/JSON/"
 
 # default.json procedures
-def defaultSizes():
+def getSizes():
     file = open(path + "default.json", 'r')
     default = json.load(file)
     sizes = default["sizes"]
     return sizes
 
-def defaultColors():
+def getColors():
     file = open(path + "default.json", 'r')
     default = json.load(file)
     colors = default["colors"]
     return colors
 
-# Creature procedures
+# creature procedures
 def creatureList():
     file = open(path + "enemies.json", 'r')
     enemies = json.load(file)
@@ -23,6 +23,12 @@ def creatureList():
     return creatures
 
 def initCreatureSpecificationV1(creatureClass):
-    creatureClass.size = utils.selectRandom(defaultSizes())
-    creatureClass.color = utils.selectRandom(defaultColors())
+    creatureClass.size = utils.selectRandom(getSizes())
+    creatureClass.color = utils.selectRandom(getColors())
     creatureClass.type = utils.selectRandom(creatureList())
+
+# magic procedures
+def getMagic():
+    file = open(path + "magic.json",'r')
+    magic = json.load(file)
+    return magic
