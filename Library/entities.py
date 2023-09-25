@@ -1,5 +1,5 @@
 import random
-import Library.jsonHelperLib.jsonHelper as jsonHelper
+from . import jsonHelper
 
 # HUDs
 playerHUD = "PLAYER:[%s] HP:[%d] SCORE:[%d]"
@@ -46,7 +46,7 @@ class enemy():
         return enemyInfo
     
     def calculateAttack(self):
-        sizes = jsonHelper.defaultSizes()
+        sizes = jsonHelper.getSizes()
         sizes.reverse()
         enemyDmg = 6 - sizes.index(self.size) # TODO damage modifiers
         enemyDmg *= random.randint(0,2) # TODO hit chance
@@ -59,10 +59,10 @@ def assignEnemySpecification(entity):
             jsonHelper.initCreatureSpecificationV1(entity)
 
 def assignEntityHp(entity):
-    sizes = jsonHelper.defaultSizes();
+    sizes = jsonHelper.getSizes();
     sizes.reverse()
     # TODO maybe make sizes in the JSON as json objects, containing hp info?
-    entity.hp = len(sizes) - sizes.index(entity.size) #FIXME object of type nonetype has no len
+    entity.hp = len(sizes) - sizes.index(entity.size)
 
 # Creature
 def createCreature():

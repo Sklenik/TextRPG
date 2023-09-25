@@ -1,5 +1,5 @@
-import Library.utilsLib.utils as utils
-import Library.entitiesLib.entities as entities
+from . import utils, entities
+from .handlers import playerInput, messageHandlers
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -16,9 +16,9 @@ handleResultMessage = "Do you wish to continue on your journey? (y/n): "
 def play():
     player = entities.player()
     player.hp = 10 # TODO difficulty options, affect damage as well, affect also the enemy, both hp and damage
-    utils.intro()
+    messageHandlers.intro()
     player.name = input(playerNameMessage)
-    utils.enterContinue(dangerousJourneyMessage, False)
+    utils.enterContinue(dangerousJourneyMessage, False, True)
     loop(player)
 
 def loop(player):    
@@ -28,10 +28,10 @@ def loop(player):
     print(creatureSpawned%(creature))
     if creature.hp == 0:
         # TODO custom death messages, make this very rare to happen as well
-        utils.enterContinue(tooWeak%creature,False)
+        utils.enterContinue(tooWeak%creature, False, True)
         loop(player)
     else:
-        utils.handlePlayerInput(player, creature)
+        playerInput.handlePlayerInput(player, creature)
     handleResult(player, creature)
     
 def handleResult(player, creature):
@@ -42,6 +42,6 @@ def handleResult(player, creature):
     if action == "y":
         loop(player)
     elif action == "n":
-        utils.handleVictory(player)
+        messageHandlers.handleVictory(player)
     else:
         handleResult(player, creature)
