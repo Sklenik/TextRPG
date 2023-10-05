@@ -37,7 +37,7 @@ class player():
 
 # Enemy
 class enemy():
-    def __init__(self, entityType):
+    def __init__(self, entityType, loot):
         self.entityType = entityType
         self.size = ''
         self.color = ''
@@ -47,7 +47,7 @@ class enemy():
         self.isDead = False
         assignEnemySpecification(self)
         assignEntityHp(self)
-        self.loot = backpack(3) # TODO next time implement the drop system on enemy death + randomize backack size and loot + implement creaturesV2 !
+        self.loot = loot # TODO next time implement the drop system on enemy death + randomize backack size and loot + implement creaturesV2 !
 
     def __str__(self):
         if self.size != '':
@@ -78,7 +78,8 @@ def assignEntityHp(entity):
 
 # Creature
 def createCreature(): # TODO create diferent enemies, not just creatures ?
-    creature = enemy("creature")
+    loot = [] # TODO
+    creature = enemy("creature", loot)
     return creature
 
 

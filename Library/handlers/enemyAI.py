@@ -16,14 +16,14 @@ enemyKilledMessage = "You have killed the %s !"
 def handleEnemyAI(player, enemy):
     if not enemy.isDead:
         if enemy.hit:
-            utils.enterContinue(enemyRetaliateMessage%enemy.type, True, True)
+            utils.enterContinue(enemyRetaliateMessage%enemy.type, False, True)
             enemy.hit = False
         else:
-            utils.enterContinue(enemyAttackMessage%enemy.type, True, True)
+            utils.enterContinue(enemyAttackMessage%enemy.type, False, True)
             
         enemyDmg = enemy.calculateAttack()
         if enemyDmg > 0:
-            utils.enterContinue(enemyInflictsDamageMessage%(enemy.type, enemyDmg), False, True)
+            utils.enterContinue(enemyInflictsDamageMessage%(enemy.type, enemyDmg), False, False)
             player.hp -= enemyDmg
             if player.hp <= 0:
                 messageHandlers.gameOver(player,playerKilledMessage%(enemy))
