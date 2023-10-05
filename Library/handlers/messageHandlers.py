@@ -10,7 +10,7 @@ enemiesSlainMessage ="Total enemies slain: %d"
 totalScoreMessage = "Total score: %d"
 
 # functions
-def intro():
+def intro(): # TODO redo in the future
     print(introMessage)
 
 def gameOver(player, message):

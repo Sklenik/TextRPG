@@ -1,13 +1,17 @@
 from .. import utils
-from . import playerAttack, enemyAI, messageHandlers
+from . import messageHandlers, enemyAI, playerAttack, magicHandlers
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
 # TODO use these vrrs to create translations ?
 handlePlayerInputMessage = 'What do you wish to do? (Attack, Item, Magic, Random, Flee): '
-repeatPlayerInputMessage = "Say, what was it again?"
+AttackAction = "Attack"
+ItemAction = "Item"
+MagicAction = "Magic"
+RandomAction = "Random"
+FleeAction = "Flee"
 
-fleeQuestion = "Are you sure you want to flee? (y/n): "
+fleeQuestion = "Are you sure you want to flee?"
 fleeMessage = "%s has decided to quit adventuring for now."
 
 # player actions
@@ -16,18 +20,17 @@ def handlePlayerInput(player, enemy):
     print(player)
     action = input(handlePlayerInputMessage)
     match action:
-        case "Attack":
+        case vars.AttackAction:
             playerAttack.handleAttack(player, enemy)
-        case "Item":
+        case vars.Item:
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
-        case "Magic":
+        case vars.Magic:
+            magicHandlers.handleMagic(player, enemy)
+        case vars.Random:
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
-        case "Random":
-            print("Feature not implemented yet.")
-            handlePlayerInput(player, enemy)
-        case "Flee":
+        case vars.Flee:
             handleFlee(player, enemy)
         # TODO add option pass ? So that with future over time effects like
         # poison or regeneration, the player can "skip turn"  or wait for
@@ -41,6 +44,7 @@ def handlePlayerInput(player, enemy):
 
 def handleItem(player, enemy): # TODO in version after handleMagic is finnisher
     # TODO make enemies drop collectable loot -> will there be an encumbrance or a backpack ? I dont know yet
+    # TODO item usage - potions, food, etc..
     pass
 
 def handleRandom(player, enemy): # TODO in version after handleItem is finnished and tested
@@ -48,12 +52,12 @@ def handleRandom(player, enemy): # TODO in version after handleItem is finnished
 
 def handleFlee(player, enemy): 
     print('')
-    action = input(fleeQuestion)
-    if action == "y":
+    action = utils.yesNoActionHandler(fleeQuestion)
+    if action == 1:
         print('')
         print(fleeMessage%player.name)
         messageHandlers.scoreMessage(player)
-    elif action == "n":
+    elif action == 2:
         handlePlayerInput(player, enemy)
-    else:
+    elif action == 0:
         handleFlee(player, enemy)

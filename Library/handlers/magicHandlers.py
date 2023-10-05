@@ -13,7 +13,7 @@ failMessage = "%s (%d damage)"
 healMessage = "%s (heal %d)"
 
 # functions
-def handleMagic(player):
+def handleMagic(player, enemy):
     magic = jsonHelper.getMagic()
 
     spells = []
@@ -44,7 +44,7 @@ def handleMagic(player):
         else:
             print(fail["info"])
     else:
-        handleSpellEffects(player, spell)
+        handleSpellEffects(player, enemy, spell)
 
 def chooseSpell(spellsTxt, spells):
     print('')
@@ -54,7 +54,7 @@ def chooseSpell(spellsTxt, spells):
     utils.enterContinue(noSuchSpellMessage, False, True)
     return chooseSpell(spellsTxt, spells)
 
-def handleSpellEffects(player, spell):        
+def handleSpellEffects(player, enemy, spell):        
     effects = spell["effects"]
     effect = utils.selectRandom(effects)
     match spell["type"]:

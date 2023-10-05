@@ -10,7 +10,7 @@ dangerousJourneyMessage = "A dangerous journey awaits!"
 creatureSpawned = "A %s appeared!"
 tooWeak = "The %s instantly died because it was too weak."
 
-handleResultMessage = "Do you wish to continue on your journey? (y/n): "
+handleResultMessage = "Do you wish to continue on your journey?"
 
 # Main
 def play():
@@ -22,8 +22,6 @@ def play():
     loop(player)
 
 def loop(player):    
-    # TODO create diferent enemies, not just creatures ?
-    # TODO maybe only the enemy class is needed ?
     creature = entities.createCreature()
     print(creatureSpawned%(creature))
     if creature.hp == 0:
@@ -35,13 +33,11 @@ def loop(player):
     handleResult(player, creature)
     
 def handleResult(player, creature):
-    # TODO get rid of these prints, just add the \n to the start of the lines? or something like that?
     print('')
-    # TODO (y/n) action handler function ?
-    action = input(handleResultMessage)
-    if action == "y":
+    action = utils.yesNoActionHandler(handleResultMessage)
+    if action == 1:
         loop(player)
-    elif action == "n":
+    elif action == 2:
         messageHandlers.handleVictory(player)
-    else:
+    elif action == 0:
         handleResult(player, creature)
