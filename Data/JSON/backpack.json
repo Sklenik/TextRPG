@@ -1,0 +1,7 @@
+{
+    "default": {
+        "backpackSkin": "*",
+        "slotSkin": "[%s]",
+        "nullSkin": "[-]"
+    }
+}

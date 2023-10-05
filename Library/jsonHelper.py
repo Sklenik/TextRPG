@@ -32,3 +32,16 @@ def getMagic():
     file = open(path + "magic.json",'r')
     magic = json.load(file)
     return magic
+
+# backpack procedures
+def initDefaultBackpack(backpack):
+    file = open(path + "backpack.json",'r')
+    skins = json.load(file)
+    skin = skins["default"]
+
+    backpack.skin = skin["backpackSkin"]
+    backpack.slotSkin = skin["slotSkin"]
+    backpack.nullSkin = skin["nullSkin"]
+
+    for i in range(backpack.defaultSlots):
+        backpack.items.append(backpack.nullSkin)
