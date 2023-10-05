@@ -11,6 +11,13 @@ MagicAction = "Magic"
 RandomAction = "Random"
 FleeAction = "Flee"
 
+class actions:
+    act1 = AttackAction
+    act2 = ItemAction
+    act3 = MagicAction
+    act4 = RandomAction
+    act5 = FleeAction
+
 fleeQuestion = "Are you sure you want to flee?"
 fleeMessage = "%s has decided to quit adventuring for now."
 
@@ -19,19 +26,29 @@ def handlePlayerInput(player, enemy):
     print(enemy.info())
     print(player)
     action = input(handlePlayerInputMessage)
+    global AttackAction, ItemAction, MagicAction, RandomAction, FleeAction
+
+
     match action:
-        case vars.AttackAction:
+        case actions.act1: # Attack
             playerAttack.handleAttack(player, enemy)
-        case vars.Item:
+        
+        case actions.act2: # Item
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
-        case vars.Magic:
+        
+        case actions.act3: # Magic
             magicHandlers.handleMagic(player, enemy)
-        case vars.Random:
+        
+        case actions.act4: # Random
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
-        case vars.Flee:
+        
+        case actions.act5: # Flee
             handleFlee(player, enemy)
+
+        case _:
+            handlePlayerInput(player, enemy)
         # TODO add option pass ? So that with future over time effects like
         # poison or regeneration, the player can "skip turn"  or wait for
         # the enemy to die from effects instead of provoking it ?
