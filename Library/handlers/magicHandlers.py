@@ -31,19 +31,8 @@ def handleMagic(player, enemy):
     spellName = chooseSpell(spellsTxt, spells)
     spell = magic[spellName]
     failChance = spell["failChance"]
-    failInt = random.randint(0,failChance)
-    if failChance == failInt:
-        fails = spell["fails"]
-        fail = utils.selectRandom(fails)
-        if fail["damage"] > 0:
-            print(fail["info"] + " (" + format(fail["damage"]) +" damage)")
-            print(failMessage%(fail["info"], fail["damage"]))
-            player.hp -= fail["damage"]
-            if player.hp <= 0:
-                messageHandlers.gameOver(player,fail["deathMessage"]) # TODO maybe move the gameOver inside the player class ? how would it work tho? something like checkPlayerDead ?
-        else:
-            print(fail["info"])
-    else:
+
+    if not utils.failHandler(spell["fails"], spell["failChance"], failMessage, player):
         handleSpellEffects(player, enemy, spell)
 
 def chooseSpell(spellsTxt, spells):
