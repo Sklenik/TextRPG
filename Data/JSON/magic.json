@@ -24,25 +24,21 @@
             {
                 "info": "You messed up",
                 "damage": 0,
-                "damageInfo": "You did not hurt yourself in any way but you did no healing either.",
                 "deathMessage": ""
             },
             {
                 "info": "You teleported your legs away.",
                 "damage": 5,
-                "damageInfo": "That was certainly unexpected. ",
                 "deathMessage": "Those missing legs were the last straw for you it seems."
             },
             {
                 "info": "You summoned a chicken! Congratulations?",
                 "damage": 0,
-                "damageInfo": "Well that didn't hurt but did not help you either. And where did the chicken go?",
                 "deathMessage": ""
             },
             {
                 "info": "You burned yourself",
                 "damage": 2,
-                "damageInfo": "You burned yourself? How? How does anyone burn themselves with a healing spell?",
                 "deathMessage": "Well congratulations, you killed yourself while attempting to heal, that's an achievement for sure."
             }
         ]
