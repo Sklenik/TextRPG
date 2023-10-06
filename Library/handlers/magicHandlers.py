@@ -49,7 +49,7 @@ def handleSpellEffects(player, enemy, spell):
     match spell["type"]:
         case "heal":
             player.hp += effect["healValue"] # TODO maximum heal cap ?
-            print(healMessage%(effect["info"]), effect["healValue"])
+            print(healMessage%(effect["info"], effect["healValue"]))
         case _:
             exit("UNKNOWN TYPE") # TODO should I keep this here or make some process to load the JSONs before the game is launched?
 
