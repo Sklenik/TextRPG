@@ -33,6 +33,12 @@ def yesNoActionHandler(message):
     else:
         return 0
     
+def chance(percent=100): 
+    num = random.randint(0, 100)
+    if num <= percent:
+        return True
+    return False
+    
 def failHandler(fails, failChance, failMessage, player):
     failInt = random.randint(0,failChance)
     if failInt == failChance:
