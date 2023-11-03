@@ -14,7 +14,7 @@ def selectRandom(group):
     position = random.randint(0,len(group)-1)
     return group[position]
 
-def enterContinue(message, addspacebefore, addspaceafter):
+def enterContinue(message='', addspacebefore=False, addspaceafter=True):
     if addspacebefore:
         print()
     if message != '':
