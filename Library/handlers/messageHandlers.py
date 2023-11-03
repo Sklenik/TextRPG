@@ -28,3 +28,7 @@ def scoreMessage(player):
     print(enemiesSlainMessage%player.enemiesSlain)
     print(totalScoreMessage%player.score)
     sys.exit()
+
+def error(message=''):
+    # TODO save the game before throwing error?
+    sys.exit(message)
