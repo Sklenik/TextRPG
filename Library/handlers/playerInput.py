@@ -1,5 +1,5 @@
 from .. import utils
-from . import messageHandlers, enemyAI, playerAttack, magicHandlers
+from . import messageHandlers, enemyAI, playerAttack, magicHandlers, itemHandler
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -34,13 +34,12 @@ def handlePlayerInput(player, enemy):
             playerAttack.handleAttack(player, enemy)
         
         case actions.act2: # Item
-            print("Feature not implemented yet.")
-            handlePlayerInput(player, enemy)
+            itemHandler.handleItem(player, enemy)
         
         case actions.act3: # Magic
             magicHandlers.handleMagic(player, enemy)
         
-        case actions.act4: # Random
+        case actions.act4: # Random # TODO in version after handleItem is finnished and tested
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
         
@@ -58,14 +57,6 @@ def handlePlayerInput(player, enemy):
 
     utils.enterContinue('', False, True)
     enemyAI.handleEnemyAI(player, enemy)
-
-def handleItem(player, enemy): # TODO in version after handleMagic is finnisher
-    # TODO make enemies drop collectable loot -> will there be an encumbrance or a backpack ? I dont know yet
-    # TODO item usage - potions, food, etc..
-    pass
-
-def handleRandom(player, enemy): # TODO in version after handleItem is finnished and tested
-    pass
 
 def handleFlee(player, enemy): 
     print('')
