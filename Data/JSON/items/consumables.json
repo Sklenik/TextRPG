@@ -1,8 +1,17 @@
 {
-    "pear": "3",
-    "cake": "10",
-    "beef steak": "4",
-    "chicken soup": "4",
-    "bread": "2",
-    "cheese": "5"
+    "common": {
+        "bread": "2",
+        "pear": "3"
+    },
+    "uncommon": {
+        "beef steak": "4",
+        "chicken soup": "4",
+        "cheese": "5"
+    },
+    "rare": {},
+    "super rare": {
+        "cake": "10"
+    },
+    "epic": {},
+    "legendary": {}
 }
