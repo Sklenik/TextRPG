@@ -1,5 +1,5 @@
 import json
-from . import utils
+from . import utils, entities
 path = "Data/JSON/"
 
 # default.json procedures
@@ -44,4 +44,10 @@ def initDefaultBackpack(backpack):
     backpack.nullSkin = skin["nullSkin"]
 
     for i in range(backpack.defaultSlots):
-        backpack.items.append(backpack.nullSkin)
+        backpack.items.append(entities.nullItem())
+
+# item procedures # TODO needs rework ?
+def getConsumables():
+    file = open(path + "items/consumables.json")
+    consumables = json.load(file)
+    return consumables

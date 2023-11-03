@@ -1,5 +1,6 @@
 import random
 from . import jsonHelper
+from .handlers import messageHandlers
 
 # HUDs
 playerHUD = "PLAYER:[%s] HP:[%d] SCORE:[%d]"
@@ -15,6 +16,9 @@ itemDiscardedMessage = "You decided to throw away the %s"
 defaultSelectMessage = "Select an item: "
 chooseItemToReplaceMessage = "Choose an item to replace: "
 chooseItemToRemoveMessage = "Choose an item to remove: "
+
+# Errors
+itemNotStackableError = 'ERROR - item not stackable'
 
 # player
 class player():
@@ -47,7 +51,7 @@ class enemy():
         self.isDead = False
         assignEnemySpecification(self)
         assignEntityHp(self)
-        self.loot = loot # TODO next time implement the drop system on enemy death + randomize backack size and loot + implement creaturesV2 !
+        self.loot = loot
 
     def __str__(self):
         if self.size != '':
@@ -64,11 +68,15 @@ class enemy():
         enemyDmg = 6 - sizes.index(self.size) # TODO damage modifiers
         enemyDmg *= random.randint(0,2) # TODO hit chance
         return enemyDmg
+    
+    def enemyDead(self, player):
+        pass # TODO enemy drop system
 
 def assignEnemySpecification(entity):
     match entity.entityType:
         case "creature":
             jsonHelper.initCreatureSpecificationV1(entity)
+            # TODO create enemy loot -> implement form creatures V2 ? Implement creatures V1.5 (not so crazy but with different types of loot)
 
 def assignEntityHp(entity):
     sizes = jsonHelper.getSizes()
@@ -80,8 +88,34 @@ def assignEntityHp(entity):
 def createCreature(): # TODO create diferent enemies, not just creatures ?
     loot = [] # TODO
     creature = enemy("creature", loot)
-    return creature
+    return creature 
 
+# Item
+class item():
+    def __init__(self, type='', rarity='', name='', count=1, stackable=True, skin="<%s>[%s]{%d}"):
+        self.type = type #TODO move into some function, json or something? Some "enum-like" class maybe ?
+        self.rarity = rarity
+        self.name = name
+        self.stackable = stackable
+        self.count = count
+        self.skin = skin
+        #TODO weight (for the encumbrance system)?
+
+    def __str__(self):
+        return self.skin%(self.rarity, self.name, self.count)
+    
+    def checkStackable(self):
+        if not self.stackable:
+            messageHandlers.error(itemNotStackableError)
+    
+    def add(self, count):
+        self.checkStackable()
+        self.count += count
+        return True
+    
+def nullItem():
+    null = item()
+    return null
 
 # Backpack
 class backpack():
@@ -91,63 +125,82 @@ class backpack():
         self.skin = ""
         self.slotSkin = ""
         self.nullSkin = ""
-        jsonHelper.initDefaultBackpack(self)
+        jsonHelper.initDefaultBackpack(self) # TODO change this to implement skins
 
     def __str__(self):
-        return createRectangleV2(self)
+        return createRectangle(self)
     
     def nullCount(self):
-        return self.items.count(self.nullSkin)
-
+        return formatItems(self).count(self.nullSkin)
+    
+    def getItemByName(self, name):
+        for item in self.items:
+            if item.name == name:
+                return item
+        return nullItem()
+    
     def addItem(self, newItem):
-        if self.nullCount() == 0:
-            backpackFull(self, newItem)
+        existingItem = self.getItemByName(newItem.name)
+        if existingItem.name != '':
+            existingItem.add(newItem.count) # TODO later when weight is implemented, this will have to be reworked slightly
         else:
-            indx = self.items.index(self.nullSkin)
-            self.items[indx] = newItem
+            if self.nullCount() == 0:
+                backpackFull(self, newItem)
+            else:
+                indx = formatItems(self).index(self.nullSkin)
+                self.items[indx] = newItem
 
     def selectItem(self, selectMessage=defaultSelectMessage):
         print(self)
-        item = input(selectMessage)
-        if (item in self.items) and (item != self.nullSkin):
-            return item
-        else:
-            return self.selectItem(selectMessage)
+        name = input(selectMessage)
+        item = self.getItemByName(name)
+        return item
         
-    def replaceItem(self, itemToReplace, newItem='', dialog=False):
+    def replaceItem(self, itemToReplace, newItem=nullItem(), dialog=False): # TODO item will have to be either class or dictionary for this to work properly, I'm not in the mood to fix it rn
         if dialog:
             itemToReplace = self.selectItem(chooseItemToReplaceMessage)
-        indx = self.items.index(itemToReplace)
-        if newItem == '':
-            self.items[indx] = self.nullSkin
-        else:
-            self.items[indx] = newItem
 
-    def removeItem(self, itemToDelete, dialog=False):
+        if itemToReplace.name == '':
+            self.replaceItem(itemToReplace, newItem, True)
+        else:
+            indx = formatItems(self).index(format(itemToReplace))
+            if newItem.name == '':
+                self.items[indx] = nullItem()
+            else:
+                self.items[indx] = newItem
+
+    def removeItem(self, dialog=True, itemToDelete=nullItem()):
         if dialog:
             itemToDelete = self.selectItem(chooseItemToRemoveMessage)
         self.replaceItem(itemToDelete)
-
-def formatBackpackList(bag):
-    formatedList = []
-    
-    for item in bag.items:
-        if item == bag.nullSkin:
-            formatedList.append(item)
-        else:
-            formatedList.append(bag.slotSkin%item)
-    
-    return formatedList
         
+def formatItems(bag):
+    formatedList = []
+    for item in bag.items:
+        if item.name == '':
+            formatedList.append(bag.nullSkin)
+        else:
+            formatedList.append(format(item))
+    return formatedList
+
+def getLengthOfLongestItem(list):
+    length = 0
+    for item in list:
+        if len(format(item)) > length:
+            length = len(format(item))
+    return length
+
 def getLengthOfLongestWord(list):
     length = 0
     for word in list:
         if len(word) > length:
             length = len(word)
-    return length    
-
-def createRectangleV2(bag):
-    formatedList = formatBackpackList(bag)
+    return length
+  
+def createRectangle(bag):
+    # mainLen = getLengthOfLongestItem(bag.items)
+    formatedList = []
+    formatedList = formatItems(bag)
     mainLen = getLengthOfLongestWord(formatedList)
 
     skin = bag.skin
@@ -157,8 +210,8 @@ def createRectangleV2(bag):
     
     rectangle = FullRow + "\n"
 
-    for item in formatedList:
-        base = skin + ' ' + item
+    for string in formatedList:
+        base = skin + ' ' + string
         noOfSpaces = RowLen - len(base) - 1
         wordRow = base + noOfSpaces*' ' + skin
         rectangle += wordRow + "\n"
@@ -169,6 +222,8 @@ def createRectangleV2(bag):
 def backpackFull(bag, newItem):
     action = input(backpackFullMessage)
     if action == discardAction:
-        print(itemDiscardedMessage%newItem)
+        print(itemDiscardedMessage%newItem.name)
     elif action == replaceAction:
         bag.replaceItem('', newItem, True)
+    else:
+        backpackFull(bag, newItem)

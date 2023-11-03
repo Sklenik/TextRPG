@@ -1,4 +1,4 @@
-from .. import utils
+from .. import utils, jsonHelper
 from . import messageHandlers, enemyAI, playerInput
 
 # Labels
@@ -21,23 +21,22 @@ selectEatMessage = "What do you wish to eat? : "
 doYouWantToEatMessage = "Are you sure you want to eat the %s ?"
 youAteMessage = "You ate the %s."
 
-# define item action
+# item action
 def handleItem(player, enemy):
     action = input(handleItemMessage)
 
     match action:
         case actions.act1: # Eat
-            print('')
             itemToEat = player.backpack.selectItem(selectEatMessage)
             handleEatLoop(player, enemy, itemToEat)
 
         case actions.act2: # Potion
             print("Feature not implemented yet.")
-            pass # TODO
+            handleItem(player, enemy)
         
         case actions.act3: # Artifact
             print("Feature not implemented yet.")
-            pass # TODO
+            handleItem(player, enemy)
         
         case actions.act4: # Cancel
             playerInput.handlePlayerInput(player, enemy)
