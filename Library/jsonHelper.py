@@ -47,7 +47,14 @@ def initDefaultBackpack(backpack):
         backpack.items.append(entities.nullItem())
 
 # item procedures # TODO needs rework ?
+# Add mysterious soup - item with random properties -> can damage the player
 def getConsumables():
     file = open(path + "items/consumables.json")
     consumables = json.load(file)
     return consumables
+
+def getConsumablesByRandomRarity() -> list:
+    jsonFile = getConsumables()
+    rarity = utils.getRarity()
+    consumables = jsonFile[rarity]
+    return [rarity, consumables]
