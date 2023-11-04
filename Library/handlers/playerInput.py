@@ -34,7 +34,10 @@ def handlePlayerInput(player, enemy):
             playerAttack.handleAttack(player, enemy)
         
         case actions.act2: # Item
-            itemHandler.handleItem(player, enemy)
+            if not player.backpack.checkIsEmpty():
+                itemHandler.handleItem(player, enemy)
+            else:
+                handlePlayerInput(player, enemy)
         
         case actions.act3: # Magic
             magicHandlers.handleMagic(player, enemy)
