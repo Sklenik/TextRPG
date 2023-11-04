@@ -55,7 +55,7 @@ def handlePlayerInput(player, enemy):
         # the RPG aspect and enable finding and provoking enemies? stealth? KO ?
         # lot of work needs to be done it seems
 
-    utils.enterContinue('', False, True)
+    utils.enterContinue()
     enemyAI.handleEnemyAI(player, enemy)
 
 def handleFlee(player, enemy): 

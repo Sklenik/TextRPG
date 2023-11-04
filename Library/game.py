@@ -18,7 +18,7 @@ def play():
     player.hp = 10 # TODO difficulty options, affect damage as well, affect also the enemy, both hp and damage
     messageHandlers.intro()
     player.name = input(playerNameMessage)
-    utils.enterContinue(dangerousJourneyMessage, False, True)
+    utils.enterContinue(dangerousJourneyMessage)
     loop(player)
 
 def loop(player):    
@@ -26,7 +26,7 @@ def loop(player):
     print(creatureSpawned%(creature))
     if creature.hp == 0:
         # TODO custom death messages, make this very rare to happen as well
-        utils.enterContinue(tooWeak%creature, False, True)
+        utils.enterContinue(tooWeak%creature)
         loop(player)
     else:
         playerInput.handlePlayerInput(player, creature)

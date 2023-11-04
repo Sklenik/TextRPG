@@ -40,7 +40,7 @@ def chooseSpell(spellsTxt, spells):
     spell = input(chooseSpellMessage%spellsTxt)
     if spell in spells:
         return spell
-    utils.enterContinue(noSuchSpellMessage, False, True)
+    utils.enterContinue(noSuchSpellMessage)
     return chooseSpell(spellsTxt, spells)
 
 def handleSpellEffects(player, enemy, spell):        

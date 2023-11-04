@@ -16,10 +16,10 @@ enemyKilledMessage = "You have killed the %s !"
 def handleEnemyAI(player, enemy):
     if not enemy.isDead:
         if enemy.hit:
-            utils.enterContinue(enemyRetaliateMessage%enemy.type, False, True)
+            utils.enterContinue(enemyRetaliateMessage%enemy.type)
             enemy.hit = False
         else:
-            utils.enterContinue(enemyAttackMessage%enemy.type, False, True)
+            utils.enterContinue(enemyAttackMessage%enemy.type)
             
         enemyDmg = enemy.calculateAttack()
         if enemyDmg > 0:
@@ -30,13 +30,13 @@ def handleEnemyAI(player, enemy):
             else:
                 playerInput.handlePlayerInput(player, enemy)
         else:
-            utils.enterContinue(enemyMissedMessage%enemy.type, False, True)
+            utils.enterContinue(enemyMissedMessage%enemy.type)
             playerInput.handlePlayerInput(player, enemy)
     else:
         sizes = jsonHelper.getSizes()
         player.score += 1 * 5 - sizes.index(enemy.size);
         player.enemiesSlain += 1
-        utils.enterContinue(enemyKilledMessage%enemy, False, True)
+        utils.enterContinue(enemyKilledMessage%enemy)
         # this is where handleResult was in the early version. Now that it is
         # gone, the handleEnemyAI function ends, then the handlePlayerInput function
         # ends, and then the code continues in the game.py again
