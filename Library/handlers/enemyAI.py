@@ -12,6 +12,10 @@ enemyMissedMessage = "The %s missed"
 
 enemyKilledMessage = "You have killed the %s !"
 
+enemyLootLabel = "Enemy loot"
+playerBackpackLabel = "Your backpack"
+enemyDroppedLootMessage = "The enemy had some items, do you want to loot them?"
+
 # functions
 def handleEnemyAI(player, enemy):
     if not enemy.isDead:
@@ -40,3 +44,26 @@ def handleEnemyAI(player, enemy):
         # this is where handleResult was in the early version. Now that it is
         # gone, the handleEnemyAI function ends, then the handlePlayerInput function
         # ends, and then the code continues in the game.py again
+
+def handleEnemyDropSystem(player, enemy):
+    if enemy.loot.IsEmpty():
+        return 0
+    
+    print(enemyLootLabel)
+    print(enemy.loot)
+    print('\n' + playerBackpackLabel)
+    print(player.backpack)
+    action = utils.yesNoActionHandler(enemyDroppedLootMessage)
+    
+    if action == 1:
+        lootEnemy(player, enemy)
+
+    elif action == 2:
+        return 0
+
+    elif action == 0:
+        handleEnemyDropSystem(player, enemy)
+
+def lootEnemy(player, enemy):
+    for item in enemy.loot:
+        player.backpack.addItem(item)
