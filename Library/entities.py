@@ -9,7 +9,8 @@ enemyInfoHUD = "Enemy Hp: [%d]"
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
 # TODO use these vrrs to create translations ?
-backpackFullMessage = "The backpack is full. Do you wish to discard the item or replace existing? (discard, replace): "
+backpackFullMessage = "The backpack is full. Do you wish to discard the item(%s) or replace existing? (discard, replace): "
+backpackEmptyMessage = "The backpack is empty."
 discardAction = "discard"
 replaceAction = "replace"
 itemDiscardedMessage = "You decided to throw away the %s"
@@ -41,7 +42,7 @@ class player():
 
 # Enemy
 class enemy():
-    def __init__(self, entityType, loot):
+    def __init__(self, entityType='', loot=[]):
         self.entityType = entityType
         self.size = ''
         self.color = ''
@@ -185,7 +186,16 @@ class backpack():
         if dialog:
             itemToDelete = self.selectItem(chooseItemToRemoveMessage)
         self.replaceItem(itemToDelete)
-        
+
+    def IsEmpty(self):
+        return self.nullCount() == self.defaultSlots
+
+    def checkIsEmpty(self):
+        if not self.IsEmpty():
+            return False
+        print(backpackEmptyMessage)
+        return True
+            
 def formatItems(bag):
     formatedList = []
     for item in bag.items:
@@ -231,11 +241,16 @@ def createRectangle(bag):
     rectangle += FullRow
     return rectangle
 
-def backpackFull(bag, newItem):
-    action = input(backpackFullMessage)
+def backpackFull(bag, newItem, showBag=True):
+    if showBag:
+        print(bag)
+
+    action = input(backpackFullMessage%(newItem))
     if action == discardAction:
         print(itemDiscardedMessage%newItem.name)
     elif action == replaceAction:
+        print('')
         bag.replaceItem('', newItem, True)
     else:
+        print('')
         backpackFull(bag, newItem)
