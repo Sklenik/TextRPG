@@ -1,5 +1,5 @@
 import random
-from . import jsonHelper
+from . import utils, jsonHelper
 from .handlers import messageHandlers
 
 # HUDs
@@ -100,6 +100,9 @@ class item():
         self.count = count
         self.skin = skin
         #TODO weight (for the encumbrance system)?
+        
+        # type specific
+        self.healValue = 0 
 
     def __str__(self):
         return self.skin%(self.rarity, self.name, self.count)
@@ -117,9 +120,18 @@ def nullItem():
     null = item()
     return null
 
+def createRandomConsumable():
+    dummyList =  jsonHelper.getConsumablesByRandomRarity()
+    rarity = dummyList[0]
+    consumables = dummyList[1]
+    dictItem = utils.selectRandomKeyAndValue(consumables)
+    consumable = item("consumable", rarity, dictItem[0])
+    consumable.healValue = dictItem[1]
+    return consumable
+
 # Backpack
 class backpack():
-    def __init__(self, defaultSlots):
+    def __init__(self, defaultSlots=5):
         self.defaultSlots = defaultSlots # TODO this will be affected by future processes later? like player encumbrance?
         self.items = []
         self.skin = ""
