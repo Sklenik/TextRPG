@@ -1,8 +1,24 @@
 {
-    "creatures": [
-        "goblin",
-        "vampire",
-        "skřítek Filípek",
-        "centaur"
-    ]
+    "creatures": {
+        "goblin": {
+            "rarity": [
+                "common"
+            ]
+        },
+        "vampire": {
+            "rarity": [
+                "uncommon"
+            ]
+        },
+        "centaur": {
+            "rarity": [
+                "rare"
+            ]
+        },
+        "skřítek Filípek": {
+            "rarity": [
+                "epic"
+            ]
+        }
+    }
 }
