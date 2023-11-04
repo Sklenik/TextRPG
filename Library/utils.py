@@ -14,6 +14,11 @@ def selectRandom(group):
     position = random.randint(0,len(group)-1)
     return group[position]
 
+def selectRandomKeyAndValue(dict) -> list:
+    dictList =  list(dict.items())
+    keyAndValue = selectRandom(dictList)
+    return keyAndValue
+
 def enterContinue(message='', addspacebefore=False, addspaceafter=True):
     if addspacebefore:
         print()
@@ -55,3 +60,17 @@ def failHandler(fails, failChance, failMessage, player):
         return True
     else:
         return False
+    
+def getRarity():
+    if chance(5):
+        return "legendary"
+    if chance(10):
+        return "epic"
+    if chance(20):
+        return "super rare"
+    if chance(30):
+        return "rare"
+    if chance(40):
+        return "uncommon"
+
+    return "common"
