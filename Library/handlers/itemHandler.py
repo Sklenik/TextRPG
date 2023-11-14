@@ -52,10 +52,10 @@ def handleEatLoop(player, enemy, dialog=True, itemToEat=entities.nullItem()):
     action = utils.yesNoActionHandler(doYouWantToEatMessage%itemToEat.name)
     
     if action == 1:
-        utils.enterContinue(youAteMessage%itemToEat)
         if itemToEat.healValue != 0:
             player.hp += itemToEat.healValue
         player.backpack.removeItem(False, itemToEat.name)
+        utils.enterContinue(youAteMessage%itemToEat)
 
     elif action == 2:
         playerInput.handlePlayerInput(player, enemy)
