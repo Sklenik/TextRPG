@@ -51,9 +51,9 @@ class enemy():
         self.hp = 0
         self.hit = False
         self.isDead = False
+        self.loot = backpack(bagslots)
         initEnemyValues(self)
         assignEntityHp(self)
-        self.loot = backpack(bagslots)
 
     def __str__(self):
         if self.size != '':
