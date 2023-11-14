@@ -17,7 +17,7 @@ playerBackpackLabel = "Your backpack"
 enemyDroppedLootMessage = "The enemy had some items, do you want to loot them?"
 
 # functions
-def handleEnemyAI(player, enemy):
+def handleEnemyAI(player, enemy) -> int:
     if not enemy.isDead:
         if enemy.hit:
             utils.enterContinue(enemyRetaliateMessage%enemy.name)
@@ -33,22 +33,26 @@ def handleEnemyAI(player, enemy):
                 messageHandlers.gameOver(player,playerKilledMessage%(enemy))
             else:
                 playerInput.handlePlayerInput(player, enemy)
+                return 1
         else:
             utils.enterContinue(enemyMissedMessage%enemy.name)
             playerInput.handlePlayerInput(player, enemy)
+            return 1
+        return 1
     else:
         sizes = jsonHelper.getSizes()
         player.score += 1 * 5 - sizes.index(enemy.size);
         player.enemiesSlain += 1
         utils.enterContinue(enemyKilledMessage%enemy)
         handleEnemyDropSystem(player, enemy)
+        return 0
         # this is where handleResult was in the early version. Now that it is
         # gone, the handleEnemyAI function ends, then the handlePlayerInput function
         # ends, and then the code continues in the game.py again
 
-def handleEnemyDropSystem(player, enemy):
+def handleEnemyDropSystem(player, enemy) -> int:
     if enemy.loot.IsEmpty():
-        return 0
+        return 1
     
     print(enemyLootLabel)
     print(enemy.loot)
@@ -58,13 +62,16 @@ def handleEnemyDropSystem(player, enemy):
     
     if action == 1:
         lootEnemy(player, enemy)
+        return 1
 
     elif action == 2:
-        return 0
+        return 1
 
     elif action == 0:
         handleEnemyDropSystem(player, enemy)
         return 1
+    
+    return 0
 
 def lootEnemy(player, enemy):
     for item in enemy.loot.items:

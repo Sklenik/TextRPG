@@ -43,11 +43,12 @@ def handleItem(player, enemy):
         case _:
             handleItem(player, enemy)
 
-def handleEatLoop(player, enemy, dialog=True, itemToEat=entities.nullItem()):
+def handleEatLoop(player, enemy, dialog=True, itemToEat=entities.nullItem()) -> int:
     if dialog:
         itemToEat = player.backpack.selectItem(selectEatMessage)
         if itemToEat.name == '':
             handleEatLoop(player, enemy, dialog, itemToEat)
+            return 0
 
     action = utils.yesNoActionHandler(doYouWantToEatMessage%itemToEat.name)
     
@@ -62,3 +63,5 @@ def handleEatLoop(player, enemy, dialog=True, itemToEat=entities.nullItem()):
     
     elif action == 0:
         handleEatLoop(player, enemy, dialog, itemToEat)
+    
+    return 1

@@ -22,7 +22,7 @@ fleeQuestion = "Are you sure you want to flee?"
 fleeMessage = "%s has decided to quit adventuring for now."
 
 # player actions
-def handlePlayerInput(player, enemy):
+def handlePlayerInput(player, enemy) -> int:
     print(enemy.info())
     print(player)
     action = input(handlePlayerInputMessage)
@@ -38,6 +38,7 @@ def handlePlayerInput(player, enemy):
                 itemHandler.handleItem(player, enemy)
             else:
                 handlePlayerInput(player, enemy)
+                return 1
         
         case actions.act3: # Magic
             magicHandlers.handleMagic(player, enemy)
@@ -45,12 +46,14 @@ def handlePlayerInput(player, enemy):
         case actions.act4: # Random # TODO in version after handleItem is finnished and tested
             print("Feature not implemented yet.")
             handlePlayerInput(player, enemy)
+            return 1
         
         case actions.act5: # Flee
             handleFlee(player, enemy)
 
         case _:
             handlePlayerInput(player, enemy)
+            return 1
         # TODO add option pass ? So that with future over time effects like
         # poison or regeneration, the player can "skip turn"  or wait for
         # the enemy to die from effects instead of provoking it ?
@@ -60,6 +63,7 @@ def handlePlayerInput(player, enemy):
 
     utils.enterContinue()
     enemyAI.handleEnemyAI(player, enemy)
+    return 0
 
 def handleFlee(player, enemy): 
     print('')
