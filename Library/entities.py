@@ -177,6 +177,13 @@ class backpack():
         if dialog:
             itemToDelete = self.selectItem(chooseItemToRemoveMessage)
         self.replaceItem(itemToDelete)
+    
+    def substractItem(self, itemToSubstract, count=1) -> int: # returns remaining quantity of the item
+        itemToSubstract.count -= count
+        if itemToSubstract.count <= 0:
+            self.removeItem(False, itemToSubstract)
+            return 0
+        return count
 
     def IsEmpty(self):
         return self.nullCount() == self.defaultSlots
