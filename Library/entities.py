@@ -23,13 +23,13 @@ itemNotStackableError = 'ERROR - item not stackable'
 
 # player
 class player():
-    def __init__(self):
+    def __init__(self, bagslots=5):
         self.entityType = ''
         self.name = ''
         self.hp = 0 # TODO affect with difficulty
         self.score = 0
         self.enemiesSlain = 0
-        self.backpack = backpack(5) # TODO affect with encumbrance ? Add with player skills/exp/levels update?
+        self.backpack = backpack(bagslots) # TODO affect with encumbrance ? Add with player skills/exp/levels update?
 
     def __str__(self):
         playerInfo = playerHUD%(self.name, self.hp, self.score)
@@ -42,22 +42,23 @@ class player():
 
 # Enemy
 class enemy():
-    def __init__(self, entityType='', loot=[]):
+    def __init__(self, entityType='', bagslots=3):
         self.entityType = entityType
         self.size = ''
         self.color = ''
-        self.type = ''
+        self.name = ''
+        self.rarity = ''
         self.hp = 0
         self.hit = False
         self.isDead = False
-        assignEnemySpecification(self)
+        initEnemyValues(self)
         assignEntityHp(self)
-        self.loot = loot
+        self.loot = backpack(bagslots)
 
     def __str__(self):
         if self.size != '':
-            return f"{self.size} {self.color} {self.type}"
-        return f"{self.color} {self.type}"
+            return f"{self.size} {self.color} {self.name}"
+        return f"{self.color} {self.name}"
     
     def info(self):
         enemyInfo = enemyInfoHUD%self.hp
@@ -73,11 +74,11 @@ class enemy():
     def enemyDead(self, player):
         pass # TODO enemy drop system
 
-def assignEnemySpecification(entity):
+def initEnemyValues(entity):
     match entity.entityType:
         case "creature":
             jsonHelper.initCreatureSpecificationV1(entity)
-            # TODO create enemy loot -> implement form creatures V2 ? Implement creatures V1.5 (not so crazy but with different types of loot)
+            jsonHelper.initCreatureLoot(entity)
 
 def assignEntityHp(entity):
     sizes = jsonHelper.getSizes()
@@ -87,8 +88,7 @@ def assignEntityHp(entity):
 
 # Creature
 def createCreature(): # TODO create diferent enemies, not just creatures ?
-    loot = [] # TODO
-    creature = enemy("creature", loot)
+    creature = enemy("creature")
     return creature 
 
 # Item
@@ -120,15 +120,6 @@ class item():
 def nullItem():
     null = item()
     return null
-
-def createRandomConsumable():
-    dummyList =  jsonHelper.getConsumablesByRandomRarity()
-    rarity = dummyList[0]
-    consumables = dummyList[1]
-    dictItem = utils.selectRandomKeyAndValue(consumables)
-    consumable = item("consumable", rarity, dictItem[0])
-    consumable.healValue = dictItem[1]
-    return consumable
 
 # Backpack
 class backpack():

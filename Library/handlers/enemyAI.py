@@ -20,21 +20,21 @@ enemyDroppedLootMessage = "The enemy had some items, do you want to loot them?"
 def handleEnemyAI(player, enemy):
     if not enemy.isDead:
         if enemy.hit:
-            utils.enterContinue(enemyRetaliateMessage%enemy.type)
+            utils.enterContinue(enemyRetaliateMessage%enemy.name)
             enemy.hit = False
         else:
-            utils.enterContinue(enemyAttackMessage%enemy.type)
+            utils.enterContinue(enemyAttackMessage%enemy.name)
             
         enemyDmg = enemy.calculateAttack()
         if enemyDmg > 0:
-            utils.enterContinue(enemyInflictsDamageMessage%(enemy.type, enemyDmg), False, False)
+            utils.enterContinue(enemyInflictsDamageMessage%(enemy.name, enemyDmg), False, False)
             player.hp -= enemyDmg
             if player.hp <= 0:
                 messageHandlers.gameOver(player,playerKilledMessage%(enemy))
             else:
                 playerInput.handlePlayerInput(player, enemy)
         else:
-            utils.enterContinue(enemyMissedMessage%enemy.type)
+            utils.enterContinue(enemyMissedMessage%enemy.name)
             playerInput.handlePlayerInput(player, enemy)
     else:
         sizes = jsonHelper.getSizes()
