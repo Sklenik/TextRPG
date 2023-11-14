@@ -77,8 +77,8 @@ class enemy():
 def initEnemyValues(entity):
     match entity.entityType:
         case "creature":
-            jsonHelper.initCreatureSpecificationV1(entity)
-            jsonHelper.initCreatureLoot(entity)
+            jsonHelper.initCreatureSpecificationV2(entity)
+            jsonHelper.initCreatureLootV2(entity)
 
 def assignEntityHp(entity):
     sizes = jsonHelper.getSizes()
