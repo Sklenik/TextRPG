@@ -22,10 +22,32 @@ def creatureList():
     creatures = enemies["creatures"]
     return creatures
 
-def initCreatureSpecificationV1(creatureClass):
+def initCreatureSpecificationV2(creatureClass):
     creatureClass.size = utils.selectRandom(getSizes())
     creatureClass.color = utils.selectRandom(getColors())
-    creatureClass.type = utils.selectRandom(creatureList())
+    keyAndValue = utils.selectRandomKeyAndValue(creatureList())
+    creatureClass.name = keyAndValue[0]
+
+def initCreatureLootV2(creatureClass):
+    creatures = creatureList()
+    creature = creatures[creatureClass.name]
+    creatureClass.loot.defaultSlots = creature["bagSize"]
+
+    for i in range(creatureClass.loot.defaultSlots):
+        rarity = utils.selectRandom(creature["rarity"])
+        
+        consumablesByRarityList = getConsumablesByRarity(rarity)
+        consumables = consumablesByRarityList[1]
+        randomConsumable = utils.selectRandomKeyAndValue(consumables)
+
+        item = entities.item("consumable", # TODO add other item types when impemented, maybe add section to enemies.json where item types are specified?
+                             rarity,
+                             randomConsumable[0], # consumable name
+                             1, # TODO maybe add more than one ? based on what tho ?
+                             True) # TODO test properly
+        item.healValue = randomConsumable[1]
+
+        creatureClass.loot.addItem(item)
 
 # magic procedures
 def getMagic():
@@ -46,15 +68,17 @@ def initDefaultBackpack(backpack):
     for i in range(backpack.defaultSlots):
         backpack.items.append(entities.nullItem())
 
-# item procedures # TODO needs rework ?
-# Add mysterious soup - item with random properties -> can damage the player
-def getConsumables():
+# item procedures
+def getConsumables(): # TODO improve? implement fail system (rotten/poisoned/cursed items)?
     file = open(path + "items/consumables.json")
+    # TODO Add mysterious soup - item with random properties -> can damage the player
     consumables = json.load(file)
     return consumables
 
-def getConsumablesByRandomRarity() -> list:
+def getConsumablesByRarity(rarity='') -> list:
+    if rarity == '':
+        rarity = utils.getRarity()
+
     jsonFile = getConsumables()
-    rarity = utils.getRarity()
     consumables = jsonFile[rarity]
     return [rarity, consumables]
