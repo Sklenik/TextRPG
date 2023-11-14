@@ -41,6 +41,7 @@ def handleEnemyAI(player, enemy):
         player.score += 1 * 5 - sizes.index(enemy.size);
         player.enemiesSlain += 1
         utils.enterContinue(enemyKilledMessage%enemy)
+        handleEnemyDropSystem(player, enemy)
         # this is where handleResult was in the early version. Now that it is
         # gone, the handleEnemyAI function ends, then the handlePlayerInput function
         # ends, and then the code continues in the game.py again
@@ -63,7 +64,8 @@ def handleEnemyDropSystem(player, enemy):
 
     elif action == 0:
         handleEnemyDropSystem(player, enemy)
+        return 1
 
 def lootEnemy(player, enemy):
-    for item in enemy.loot:
+    for item in enemy.loot.items:
         player.backpack.addItem(item)
