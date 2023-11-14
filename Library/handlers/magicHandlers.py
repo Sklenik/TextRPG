@@ -30,7 +30,6 @@ def handleMagic(player, enemy):
 
     spellName = chooseSpell(spellsTxt, spells)
     spell = magic[spellName]
-    failChance = spell["failChance"]
 
     if not utils.failHandler(spell["fails"], spell["failChance"], failMessage, player):
         handleSpellEffects(player, enemy, spell)
