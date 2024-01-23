@@ -12,8 +12,3 @@ if __name__ == "__main__":
 #  missing console output space
 #   - when playerinput receives unknown input
 #   - when player uses backack and it is empty
-#   - 
-    
-#FIXME
-#  incorect value
-#   - when item is consumed, the incorect qty is displayed. Why is the qty displayed in the first place?
