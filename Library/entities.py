@@ -93,13 +93,14 @@ def createCreature(): # TODO create diferent enemies, not just creatures ?
 
 # Item
 class item():
-    def __init__(self, type='', rarity='', name='', count=1, stackable=True, skin="<%s>[%s]{%d}"):
+    def __init__(self, type='', rarity='', name='', count=1, stackable=True, skin="<%s>[%s]{%d}", noQtySkin="<%s>[%s]"):
         self.type = type #TODO move into some function, json or something? Some "enum-like" class maybe ?
         self.rarity = rarity
         self.name = name
         self.stackable = stackable
         self.count = count
         self.skin = skin
+        self.noQtySkin = noQtySkin
         #TODO weight (for the encumbrance system)?
         
         # type specific
@@ -107,6 +108,9 @@ class item():
 
     def __str__(self):
         return self.skin%(self.rarity, self.name, self.count)
+    
+    def noQtyName(self):
+        return self.noQtySkin%(self.rarity, self.name)
     
     def checkStackable(self):
         if not self.stackable:
