@@ -45,8 +45,7 @@ def chance(percent=100):
     return False
     
 def failHandler(fails, failChance, failMessage, player):
-    failInt = random.randint(0,failChance)
-    if failInt == failChance:
+    if chance(failChance):
         fail = selectRandom(fails)
         if fail["damage"] > 0:
             print(fail["info"] + " (" + format(fail["damage"]) +" damage)")
