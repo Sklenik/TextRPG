@@ -1,8 +1,8 @@
 # Documentation (rename this header to project name later)
  - The following table displays the version, description and date of the update
  - The version format is currently {major}.{minor}.{patch}-{prerelease}-{prerelease version}
-###
 
+###
    Version    |      Description      |     Date    |                   Patch notes                   |
 --------------|-----------------------|-------------|-------------------------------------------------|
  1.0.0-Alfa-1 | Project Alfa Release  | 24. 9. 2023 | [1.0.0-Alfa-1.md](./patchNotes/1.0.0-Alfa-1.md) |
@@ -10,7 +10,6 @@
 
 ## Game mechanics
 Game consists of a narrative supported by player text input. Player selects actions from offered options via entering their names in the console. The game then reacts accordingly.
-
 
 ### Intro
 Game begins with short intro, then the player is prompted to name his character and the game begins with some more intro text.
