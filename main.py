@@ -5,9 +5,6 @@ if __name__ == "__main__":
 
 # TODO create jsonParser to simplify JSON file creation? (a program to create JSON files out of simple .txt, I think it might help with creating different creatures, items, etc.)
 
-#FIXME if backack is full, and item can be added (count can be increased) backpackfull funciton still occurs
-
 #FIXME
 #  missing console output space
-#   - when playerinput receives unknown input
 #   - when player uses backack and it is empty
