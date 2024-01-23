@@ -17,5 +17,3 @@ if __name__ == "__main__":
 #FIXME
 #  incorect value
 #   - when item is consumed, the incorect qty is displayed. Why is the qty displayed in the first place?
-    
-# TODO remove the "unknown spell" message
