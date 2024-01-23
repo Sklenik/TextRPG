@@ -75,4 +75,5 @@ def handleEnemyDropSystem(player, enemy) -> int:
 
 def lootEnemy(player, enemy):
     for item in enemy.loot.items:
-        player.backpack.addItem(item)
+        if item.name != '':
+            player.backpack.addItem(item)
