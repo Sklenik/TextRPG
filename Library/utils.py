@@ -48,7 +48,6 @@ def failHandler(fails, failChance, failMessage, player):
     if chance(failChance):
         fail = selectRandom(fails)
         if fail["damage"] > 0:
-            print(fail["info"] + " (" + format(fail["damage"]) +" damage)")
             print(failMessage%(fail["info"], fail["damage"]))
             player.hp -= fail["damage"]
             if player.hp <= 0:
