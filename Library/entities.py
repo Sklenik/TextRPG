@@ -4,7 +4,7 @@ from .handlers import messageHandlers
 
 # HUDs
 playerHUD = "PLAYER:[%s] HP:[%d] SCORE:[%d]"
-enemyInfoHUD = "Enemy Hp: [%d]"
+enemyHUD = "%s - HP:[%d]"
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -61,7 +61,7 @@ class enemy():
         return f"{self.color} {self.name}"
     
     def info(self):
-        enemyInfo = enemyInfoHUD%self.hp
+        enemyInfo = enemyHUD%(self, self.hp)
         return enemyInfo
     
     def calculateAttack(self):
@@ -247,7 +247,7 @@ def backpackFull(bag, newItem, showBag=True):
     if showBag:
         print(bag)
 
-    action = input(backpackFullMessage%(newItem))
+    action = input(backpackFullMessage%(newItem.noQtyName()))
     if action == discardAction:
         print(itemDiscardedMessage%newItem.name)
     elif action == replaceAction:
