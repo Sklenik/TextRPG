@@ -6,10 +6,7 @@ from . import messageHandlers
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
 # TODO use these vars to create translations ?
 chooseSpellMessage = "Choose a spell (%s): "
-noSuchSpellMessage = "There is no such spell, choose again."
-
 failMessage = "%s (%d damage)"
-
 healMessage = "%s (heal %d)"
 
 # functions
@@ -39,7 +36,6 @@ def chooseSpell(spellsTxt, spells):
     spell = input(chooseSpellMessage%spellsTxt)
     if spell in spells:
         return spell
-    utils.enterContinue(noSuchSpellMessage)
     return chooseSpell(spellsTxt, spells)
 
 def handleSpellEffects(player, enemy, spell):        
