@@ -4,11 +4,12 @@ from . import messageHandlers, enemyAI, playerAttack, magicHandlers, itemHandler
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
 # TODO use these vrrs to create translations ?
-handlePlayerInputMessage = 'What do you wish to do? (Attack, Item, Magic, Random, Flee): '
+handlePlayerInputMessage = 'What do you wish to do? (Attack, Item, Magic, Random, Show Bag, Flee): '
 AttackAction = "Attack"
 ItemAction = "Item"
 MagicAction = "Magic"
 RandomAction = "Random"
+ShowBagAction = "Show Bag"
 FleeAction = "Flee"
 
 class actions:
@@ -16,7 +17,8 @@ class actions:
     act2 = ItemAction
     act3 = MagicAction
     act4 = RandomAction
-    act5 = FleeAction
+    act5 = ShowBagAction
+    act6 = FleeAction
 
 fleeQuestion = "Are you sure you want to flee?"
 fleeMessage = "%s has decided to quit adventuring for now."
@@ -48,10 +50,17 @@ def handlePlayerInput(player, enemy) -> int:
             handlePlayerInput(player, enemy)
             return 1
         
-        case actions.act5: # Flee
+        case actions.act5: # Show bag
+            print()
+            print(player.backpack)
+            handlePlayerInput(player, enemy)
+            return 1
+
+        case actions.act6: # Flee
             handleFlee(player, enemy)
 
         case _:
+            print()
             handlePlayerInput(player, enemy)
             return 1
         # TODO add option pass ? So that with future over time effects like
