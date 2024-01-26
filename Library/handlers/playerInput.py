@@ -24,12 +24,14 @@ fleeQuestion = "Are you sure you want to flee?"
 fleeMessage = "%s has decided to quit adventuring for now."
 
 # player actions
-def handlePlayerInput(player, enemy) -> int:
+def handlePlayerInput(player, enemy, printspace=True) -> int:
+    if printspace:
+        print('')
+        
     print(enemy.info())
     print(player)
     action = input(handlePlayerInputMessage)
     global AttackAction, ItemAction, MagicAction, RandomAction, FleeAction
-
 
     match action:
         case actions.act1: # Attack
@@ -51,7 +53,6 @@ def handlePlayerInput(player, enemy) -> int:
             return 1
         
         case actions.act5: # Show bag
-            print()
             print(player.backpack)
             handlePlayerInput(player, enemy)
             return 1
@@ -60,7 +61,6 @@ def handlePlayerInput(player, enemy) -> int:
             handleFlee(player, enemy)
 
         case _:
-            print()
             handlePlayerInput(player, enemy)
             return 1
         # TODO add option pass ? So that with future over time effects like
@@ -74,8 +74,10 @@ def handlePlayerInput(player, enemy) -> int:
     enemyAI.handleEnemyAI(player, enemy)
     return 0
 
-def handleFlee(player, enemy): 
-    print('')
+def handleFlee(player, enemy, printspace=True):
+    if printspace:
+        print('')
+         
     action = utils.yesNoActionHandler(fleeQuestion)
     if action == 1:
         print('')
