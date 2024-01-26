@@ -25,6 +25,7 @@ def handleVictory(player):
     scoreMessage(player)
 
 def scoreMessage(player):
+    print('')
     print(enemiesSlainMessage%player.enemiesSlain)
     print(totalScoreMessage%player.score)
     sys.exit()
