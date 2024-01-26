@@ -19,7 +19,7 @@ class actions:
 
 selectEatMessage = "What do you wish to eat? : "
 doYouWantToEatMessage = "Are you sure you want to eat the %s ?"
-youAteMessage = "You ate the %s."
+youAteMessage = "You ate the %s. (heal %d)"
 
 # item action
 def handleItem(player, enemy):
@@ -56,7 +56,7 @@ def handleEatLoop(player, enemy, dialog=True, itemToEat=entities.nullItem()) -> 
         if int(itemToEat.healValue) != 0:
             player.hp += int(itemToEat.healValue)
         player.backpack.substractItem(itemToEat)
-        print(youAteMessage%itemToEat.noQtyName())
+        print(youAteMessage%(itemToEat.noQtyName(),itemToEat.healValue))
 
     elif action == 2:
         playerInput.handlePlayerInput(player, enemy)
