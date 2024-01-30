@@ -1,0 +1,19 @@
+{
+    "": { // The name of the spell
+        "type": "", // The type of the spell
+        "effects": [
+            {
+                "info": "", // Message displayed to the player when effect occurs
+                "healValue": 0
+            }
+        ],
+        "failChance": 0, // Percentual chance of the fail occuring
+        "fails": [
+            {
+                "info": "", // Message displayed to the player when fail occurs
+                "damage": 0, // Damage the player receives from the failed spell
+                "deathMessage": "" // Message displayed when the player is killed by the failed spell
+            }
+        ]
+    }
+}
