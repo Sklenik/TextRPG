@@ -1,5 +1,5 @@
 from .. import utils
-from . import messageHandlers, enemyAI, playerAttack, magicHandlers, itemHandler
+from . import magicHandler, messageHandler, enemyAI, playerAttack, itemHandler
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -45,7 +45,7 @@ def handlePlayerInput(player, enemy, printspace=True) -> int:
                 return 1
         
         case actions.act3: # Magic
-            magicHandlers.handleMagic(player, enemy)
+            magicHandler.handleMagic(player, enemy)
         
         case actions.act4: # Random # TODO in version after handleItem is finnished and tested
             print("Feature not implemented yet.")
@@ -82,7 +82,7 @@ def handleFlee(player, enemy, printspace=True):
     if action == 1:
         print()
         print(fleeMessage%player.name)
-        messageHandlers.scoreMessage(player)
+        messageHandler.scoreMessage(player)
     elif action == 2:
         handlePlayerInput(player, enemy)
     elif action == 0:

@@ -1,5 +1,5 @@
 from . import utils, entities
-from .handlers import playerInput, messageHandlers
+from .handlers import messageHandler, playerInput
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -16,7 +16,7 @@ handleResultMessage = "Do you wish to continue on your journey?"
 def play():
     player = entities.player()
     player.hp = 10 # TODO difficulty options, affect damage as well, affect also the enemy, both hp and damage
-    messageHandlers.intro()
+    messageHandler.intro()
     player.name = input(playerNameMessage)
     utils.enterContinue(dangerousJourneyMessage)
     loop(player)
@@ -39,6 +39,6 @@ def handleResult(player, creature):
     if action == 1:
         loop(player)
     elif action == 2:
-        messageHandlers.handleVictory(player)
+        messageHandler.handleVictory(player)
     elif action == 0:
         handleResult(player, creature)

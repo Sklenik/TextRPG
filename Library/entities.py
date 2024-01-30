@@ -1,6 +1,6 @@
 import random
 from . import utils, jsonHelper
-from .handlers import messageHandlers
+from .handlers import messageHandler
 
 # HUDs
 playerHUD = "PLAYER:[%s] HP:[%d] SCORE:[%d]"
@@ -114,7 +114,7 @@ class item():
     
     def checkStackable(self):
         if not self.stackable:
-            messageHandlers.error(itemNotStackableError)
+            messageHandler.error(itemNotStackableError)
     
     def add(self, count):
         self.checkStackable()

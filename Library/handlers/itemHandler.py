@@ -1,5 +1,5 @@
 from .. import utils, jsonHelper, entities
-from . import messageHandlers, enemyAI, playerInput
+from . import messageHandler, enemyAI, playerInput
 
 # Labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json

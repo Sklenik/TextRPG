@@ -1,5 +1,5 @@
 import random
-from .handlers import messageHandlers
+from .handlers import messageHandler
 
 # labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
@@ -51,7 +51,7 @@ def failHandler(fails, failChance, failMessage, player):
             print(failMessage%(fail["info"], fail["damage"]))
             player.hp -= fail["damage"]
             if player.hp <= 0:
-                messageHandlers.gameOver(player,fail["deathMessage"]) # TODO maybe move the gameOver inside the player class ? how would it work tho? something like checkPlayerDead ?
+                messageHandler.gameOver(player,fail["deathMessage"]) # TODO maybe move the gameOver inside the player class ? how would it work tho? something like checkPlayerDead ?
         else:
             print(fail["info"])
         

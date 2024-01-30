@@ -1,5 +1,5 @@
 from .. import jsonHelper, utils
-from . import messageHandlers, playerInput
+from . import messageHandler, playerInput
 
 # labels
 enemyRetaliateMessage = "The %s got hit but refuses to give up and retaliates!"
@@ -30,7 +30,7 @@ def handleEnemyAI(player, enemy) -> int:
             utils.enterContinue(enemyInflictsDamageMessage%(enemy.name, enemyDmg), False, False)
             player.hp -= enemyDmg
             if player.hp <= 0:
-                messageHandlers.gameOver(player,playerKilledMessage%(enemy))
+                messageHandler.gameOver(player,playerKilledMessage%(enemy))
             else:
                 playerInput.handlePlayerInput(player, enemy)
                 return 1

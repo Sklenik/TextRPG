@@ -1,6 +1,6 @@
 import random
 from .. import jsonHelper, utils
-from . import messageHandlers
+from . import messageHandler
 
 # labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
