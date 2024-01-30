@@ -26,7 +26,7 @@ fleeMessage = "%s has decided to quit adventuring for now."
 # player actions
 def handlePlayerInput(player, enemy, printspace=True) -> int:
     if printspace:
-        print('')
+        print()
         
     print(enemy.info())
     print(player)
@@ -76,11 +76,11 @@ def handlePlayerInput(player, enemy, printspace=True) -> int:
 
 def handleFlee(player, enemy, printspace=True):
     if printspace:
-        print('')
+        print()
          
     action = utils.yesNoActionHandler(fleeQuestion)
     if action == 1:
-        print('')
+        print()
         print(fleeMessage%player.name)
         messageHandlers.scoreMessage(player)
     elif action == 2:

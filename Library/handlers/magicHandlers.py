@@ -32,7 +32,7 @@ def handleMagic(player, enemy):
         handleSpellEffects(player, enemy, spell)
 
 def chooseSpell(spellsTxt, spells):
-    print('')
+    print()
     spell = input(chooseSpellMessage%spellsTxt)
     if spell in spells:
         return spell

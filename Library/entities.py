@@ -251,8 +251,8 @@ def backpackFull(bag, newItem, showBag=True):
     if action == discardAction:
         print(itemDiscardedMessage%newItem.name)
     elif action == replaceAction:
-        print('')
+        print()
         bag.replaceItem('', newItem, True)
     else:
-        print('')
+        print()
         backpackFull(bag, newItem)

@@ -7,7 +7,7 @@ playerMissMessage = "You missed"
 # Handlers
 
 def handleAttack(player, enemy):
-    print('')
+    print()
     playerDmg = player.calculateAttack()
     if playerDmg > 0:
         enemy.hit = True
