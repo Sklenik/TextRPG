@@ -23,6 +23,7 @@ def play():
 
 def loop(player):    
     creature = entities.createCreature()
+    print()
     print(creatureSpawned%(creature))
     if creature.hp == 0:
         # TODO custom death messages, make this very rare to happen as well
@@ -33,7 +34,7 @@ def loop(player):
     handleResult(player, creature)
     
 def handleResult(player, creature):
-    print('')
+    print()
     action = utils.yesNoActionHandler(handleResultMessage)
     if action == 1:
         loop(player)
