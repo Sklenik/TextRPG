@@ -35,7 +35,7 @@ def handleEnemyAI(player, enemy) -> int:
                 playerInput.handlePlayerInput(player, enemy)
                 return 1
         else:
-            utils.enterContinue(enemyMissedMessage%enemy.name)
+            utils.enterContinue(enemyMissedMessage%enemy.name, False, False)
             playerInput.handlePlayerInput(player, enemy)
             return 1
         return 1
