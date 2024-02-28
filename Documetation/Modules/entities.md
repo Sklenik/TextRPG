@@ -14,7 +14,7 @@ This class stores:
  - player hp
  - player score
  - count of enemies slain by the player
- - player inventory - this uses the backpack class
+ - player inventory - this uses the [backpack](#backpack) class
 
 Built-in functions
  - When printed, the class displays *"PLAYER:[\string] HP:[\float] SCORE:[\float]"*. This is considered the "HUD" and it's currently hardcoded.
@@ -35,7 +35,7 @@ This class stores:
  - hp - calculated from the size
  - hit - indicates whether the enemy has been damaged at least once by the player
  - isDead - indicates whether the enemy has been killed by the action
- - loot - this uses the backpack class. Generated using the rarity and bagslots
+ - loot - this uses the [backpack](#backpack) class. Generated using the rarity and bagslots
 
 Built-in funcitons
  - when printed and size is not '', displays size, color, name. If size is '', displays color, name
@@ -51,7 +51,7 @@ How does the player HUD look in the console\
 ![playerHud](/Data/Static/playerHud.png)
 
 ### item
-This is the class that creates the itenm object which is passed to backpack class and used to keep track of individual item data.
+This is the class that creates the itenm object which is passed to [backpack](#backpack) class and used to keep track of individual item data.
 
 Parameters
  - type
@@ -81,7 +81,7 @@ Built-in functions
  - *add* - increments the count of the item stack, if stackable
 
 Related functions
- - *nullItem* - creates null item used to create empty backpack slots
+ - *nullItem* - creates null item used to create empty [backpack](#backpack) slots
 
 How does the enemy HUD look in the console\
 ![enemyHud](/Data/Static/enemyHud.png)
