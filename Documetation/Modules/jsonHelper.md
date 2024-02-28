@@ -42,6 +42,6 @@ Then the empty slots are added to the backpack. The count of empty slots equals 
 
 Parses the consumables.json into a dictionary and returns it.
 
-### getCOnsumablesByRarity()
+### getConsumablesByRarity()
 
 Rarity is passed as a parameter to the function. The function then parses only the consumables of the provided rarity and returns them in a list. The list format is \[RARITY, CONSUMABLES=\[CONSUMABLE,...]].
