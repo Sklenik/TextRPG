@@ -70,9 +70,6 @@ class enemy():
         enemyDmg = 6 - sizes.index(self.size) # TODO damage modifiers
         enemyDmg *= random.randint(0,2) # TODO hit chance
         return enemyDmg
-    
-    def enemyDead(self, player):
-        pass # TODO enemy drop system
 
 def initEnemyValues(entity):
     match entity.entityType:
@@ -97,8 +94,8 @@ class item():
         self.type = type #TODO move into some function, json or something? Some "enum-like" class maybe ?
         self.rarity = rarity
         self.name = name
-        self.stackable = stackable
         self.count = count
+        self.stackable = stackable
         self.skin = skin
         self.noQtySkin = noQtySkin
         #TODO weight (for the encumbrance system)?
