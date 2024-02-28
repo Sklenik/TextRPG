@@ -8,7 +8,7 @@ Handles what the player does when it's time for the player action. Runs handlers
 First, the function prints out he enemy and player HUD, then it prints out what actions can the player use.
 
 Implemented actions:
- - attack - runs the [playerAttack.py](./Modules/handlers/playerAttack.md) handler
+ - attack - runs the [playerAttack.py](./Modules/handlers/playerAttack.md)
  - magic - runs the [magicHandler.py](./Modules/handlers/magicHandler.md)
  - item - runs the [itemHandler.py](./Modules/handlers/itemHandler.md)
  - random - not implemented yet
