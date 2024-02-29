@@ -2,11 +2,11 @@
 
 ## Functions
 
-### play()
+### play
 
 Creates player alongside some game intro and launches the game loop
 
-### loop()
+### loop
 
 The game loop consists of the following simple schema:
 
@@ -19,6 +19,6 @@ How does the game loop work?
 
 After player chooses an actton, the enemy AI is handled, after which the *handleResult()* function is run. The function asks the player if he wishes to continue or end the game.
 
-### handleResult()
+### handleResult
 
 Asks the player if he wishes to continue or end the game. If the player wants to continue, the game loop repeats.
