@@ -3,6 +3,7 @@
 ## classes
 
 ### player
+
 This is the class that creates the player object which is then passed throughout the entire game loop.
 
 Parameters
@@ -17,10 +18,15 @@ This class stores:
  - player inventory - this uses the [backpack](#backpack) class
 
 Built-in functions
- - When printed, the class displays *"PLAYER:[\string] HP:[\float] SCORE:[\float]"*. This is considered the "HUD" and it's currently hardcoded.
  - *calculateAttack* that's used to calculate the player attack dmg.
 
+How does the player HUD look in the console
+```
+>>> PLAYER [TesterMan] HP:[10] SCORE:[0]
+```
+
 ### enemy
+
 This is the class that creates the enemy object which is then passed throughout the entire game loop.
 
 Parameters
@@ -47,10 +53,13 @@ Related functions
  - *assignEntityHp* - calculates the enemy HP using sizes
  - *createCreature* - create an enemy of type creature (assigns entityType and initializes the enemy class)
 
-How does the player HUD look in the console\
-![playerHud](/Data/Static/playerHud.png)
+How does the enemy HUD look in the console
+```
+>>> big pink goblin - HP:[4]
+```
 
 ### item
+
 This is the class that creates the itenm object which is passed to [backpack](#backpack) class and used to keep track of individual item data.
 
 Parameters
@@ -83,10 +92,8 @@ Built-in functions
 Related functions
  - *nullItem* - creates null item used to create empty [backpack](#backpack) slots
 
-How does the enemy HUD look in the console\
-![enemyHud](/Data/Static/enemyHud.png)
-
 ### backpack
+
 This is the class that creates backpack itenm object which is passed to player and enemy classess, used to keep track of entity inventory. Stores and manages item classes.
 
 Parameters
@@ -117,10 +124,16 @@ Related functions
  - *backpackFull* - checks whether backpack is full. If the backpack is full, the funcion takes the player throught the necessary steps to discard some stored or found items in order to continue the game.
 
 How does the backpack look in the console
- - "*" is the backpackSkin
- - "[]" is the slotSkin of the backpack (item info goes in between the brackets)
- - "[-]" is the nullSkin of the backpack
- - "\<rarity>[name]{count}" is the skin of the items in the backpack
 
-Backpack\
-![backpack](/Data/Static/backpack.png)
+```
+*********************************
+* <super rare>[chicken soup]{4} *
+* <super rare>[cheese]{1}       *
+* [-]                           *
+*********************************
+>>>
+```
+
+**\[*\]** is the backpackSkin  
+**[-]** is the nullSkin of the backpack  
+**\<rarity>[name]{count}** is the skin of the items in the backpack  
