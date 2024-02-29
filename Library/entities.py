@@ -128,7 +128,6 @@ class backpack():
         self.defaultSlots = defaultSlots # TODO this will be affected by future processes later? like player encumbrance?
         self.items = []
         self.skin = ""
-        self.slotSkin = ""
         self.nullSkin = ""
         jsonHelper.initDefaultBackpack(self) # TODO change this to implement skins
 

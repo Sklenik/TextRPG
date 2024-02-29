@@ -62,7 +62,6 @@ def initDefaultBackpack(backpack):
     skin = skins["default"]
 
     backpack.skin = skin["backpackSkin"]
-    backpack.slotSkin = skin["slotSkin"]
     backpack.nullSkin = skin["nullSkin"]
 
     for i in range(backpack.defaultSlots):

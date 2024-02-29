@@ -102,7 +102,6 @@ Parameters
 This class stores
  - items - list of item classes
  - skin - backpack skin used for the backpack sides when it's printed out
- - slotSkin - how a stack looks in the bag
  - nullSkin - how an empty stack looks in the bag
 
 Built-in functions
