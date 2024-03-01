@@ -1,8 +1,40 @@
 {
-    "creatures": [
-        "goblin",
-        "vampire",
-        "skřítek Filípek",
-        "centaur"
-    ]
+    "creatures": {
+        "goblin": {
+            "bagSize": 3,
+            "rarity": [
+                "common"
+            ]
+        },
+        "vampire": {
+            "bagSize": 3,
+            "rarity": [
+                "uncommon"
+            ]
+        },
+        "centaur": {
+            "bagSize": 4,
+            "rarity": [
+                "rare"
+            ]
+        },
+        "ogre": {
+            "bagSize": 5,
+            "rarity": [
+                "super rare"
+            ]
+        },
+        "skřítek Filípek": {
+            "bagSize": 10,
+            "rarity": [
+                "epic"
+            ]
+        },
+        "dragon": {
+            "bagSize": 8,
+            "rarity": [
+                "legendary"
+            ]
+        }
+    }
 }

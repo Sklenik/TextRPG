@@ -1,0 +1,10 @@
+{
+    "": { // Enemy Type
+        "": { // Enemy Name
+            "bagSize": 3, // Inventory size
+            "rarity": [ // What rarities the enemy can be (affects loot). Array.
+                "common"
+            ]
+        }
+    }
+}

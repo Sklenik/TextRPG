@@ -1,0 +1,5 @@
+{
+    "": { // Rarity
+        "": "1" // Consumable name and healvalue. Dictionary (You can add more "NAME":HEALVALUE members here).
+    }
+}

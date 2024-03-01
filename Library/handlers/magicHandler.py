@@ -1,19 +1,16 @@
 import random
 from .. import jsonHelper, utils
-from . import messageHandlers
+from . import messageHandler
 
 # labels
 # TODO use these vars to provide different versions of the messages later, using data saved in something like lines.json
 # TODO use these vars to create translations ?
 chooseSpellMessage = "Choose a spell (%s): "
-noSuchSpellMessage = "There is no such spell, choose again."
-
 failMessage = "%s (%d damage)"
-
 healMessage = "%s (heal %d)"
 
 # functions
-def handleMagic(player):
+def handleMagic(player, enemy):
     magic = jsonHelper.getMagic()
 
     spells = []
@@ -30,37 +27,24 @@ def handleMagic(player):
 
     spellName = chooseSpell(spellsTxt, spells)
     spell = magic[spellName]
-    failChance = spell["failChance"]
-    failInt = random.randint(0,failChance)
-    if failChance == failInt:
-        fails = spell["fails"]
-        fail = utils.selectRandom(fails)
-        if fail["damage"] > 0:
-            print(fail["info"] + " (" + format(fail["damage"]) +" damage)")
-            print(failMessage%(fail["info"], fail["damage"]))
-            player.hp -= fail["damage"]
-            if player.hp <= 0:
-                messageHandlers.gameOver(player,fail["deathMessage"]) # TODO maybe move the gameOver inside the player class ? how would it work tho? something like checkPlayerDead ?
-        else:
-            print(fail["info"])
-    else:
-        handleSpellEffects(player, spell)
+
+    if not utils.failHandler(spell["fails"], spell["failChance"], failMessage, player):
+        handleSpellEffects(player, enemy, spell)
 
 def chooseSpell(spellsTxt, spells):
-    print('')
+    print()
     spell = input(chooseSpellMessage%spellsTxt)
     if spell in spells:
         return spell
-    utils.enterContinue(noSuchSpellMessage, False, True)
     return chooseSpell(spellsTxt, spells)
 
-def handleSpellEffects(player, spell):        
+def handleSpellEffects(player, enemy, spell):        
     effects = spell["effects"]
     effect = utils.selectRandom(effects)
     match spell["type"]:
         case "heal":
             player.hp += effect["healValue"] # TODO maximum heal cap ?
-            print(healMessage%(effect["info"]), effect["healValue"])
+            print(healMessage%(effect["info"], effect["healValue"]))
         case _:
             exit("UNKNOWN TYPE") # TODO should I keep this here or make some process to load the JSONs before the game is launched?
 
