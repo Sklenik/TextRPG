@@ -8,7 +8,7 @@
 --------------|---------------------------------------------------|-------------|-------------------------------------------------|
  1.0.0-Alfa-1 | Project Alfa Release                              | 24. 9. 2023 | [1.0.0-Alfa-1.md](./patchNotes/1.0.0-Alfa-1.md) |
  1.0.0-Alfa-2 | Bugfixes, added Magic                             | 25. 9. 2023 | [1.0.0-Alfa-2.md](./patchNotes/1.0.0-Alfa-2.md) |
- 1.0.0-Alfa-3 | Magic fix, Items, New enemies & project structure | XX. X. XXXX | [1.0.0-Alfa-3.md](./patchNotes/1.0.0-Alfa-3.md) |
+ 1.0.0-Alfa-3 | Magic fix, Items, Backpack & project structure    |  1. 3. 2024 | [1.0.0-Alfa-3.md](./patchNotes/1.0.0-Alfa-3.md) |
 
 ## Playing
 
