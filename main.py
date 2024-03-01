@@ -7,6 +7,3 @@ if __name__ == "__main__":
 
 # TODO make the pink and pointy color rare and special somehow
 # TODO make it possible for creatures to spawn with 0 hp
-    
-# TODO finish the documentation
-# TODO merge dev -> master already !
