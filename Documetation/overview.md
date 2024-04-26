@@ -4,11 +4,12 @@
 
 ### Changes
 
-   Version    |      Description                                  |     Date    |                   Patch notes                   |
---------------|---------------------------------------------------|-------------|-------------------------------------------------|
- 1.0.0-Alfa-1 | Project Alfa Release                              | 24. 9. 2023 | [1.0.0-Alfa-1.md](./patchNotes/1.0.0-Alfa-1.md) |
- 1.0.0-Alfa-2 | Bugfixes, added Magic                             | 25. 9. 2023 | [1.0.0-Alfa-2.md](./patchNotes/1.0.0-Alfa-2.md) |
- 1.0.0-Alfa-3 | Magic fix, Items, Backpack & project structure    |  1. 3. 2024 | [1.0.0-Alfa-3.md](./patchNotes/1.0.0-Alfa-3.md) |
+   Version      |      Description                                  |     Date    |                   Patch notes                       |
+----------------|---------------------------------------------------|-------------|-----------------------------------------------------|
+ 1.0.0-Alfa-1   | Project Alfa Release                              | 24. 9. 2023 | [1.0.0-Alfa-1.md](./patchNotes/1.0.0-Alfa-1.md)     |
+ 1.0.0-Alfa-2   | Bugfixes, added Magic                             | 25. 9. 2023 | [1.0.0-Alfa-2.md](./patchNotes/1.0.0-Alfa-2.md)     |
+ 1.0.0-Alfa-3   | Magic fix, Items, Backpack & project structure    |  1. 3. 2024 | [1.0.0-Alfa-3.md](./patchNotes/1.0.0-Alfa-3.md)     |
+ 1.0.0-Alfa-3.1 | Fixed game breaking bug, added info on PR 4 & 5   | 26. 4. 2024 | [1.0.0-Alfa-3.1.md](./patchNotes/1.0.0-Alfa-3.1.md) |
 
 ## Playing
 
