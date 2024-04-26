@@ -1,28 +1,28 @@
 {
     "common": {
-        "mushroom": "1",
-        "bread": "2",
-        "potato": "3"
+        "mushroom": 1,
+        "bread": 2,
+        "potato": 3
     },
     "uncommon": {
-        "apple": "4",
-        "pear": "5"
+        "apple": 4,
+        "pear": 5
     },
     "rare": {
-        "beef steak": "6",
-        "banana": "7"
+        "beef steak": 6,
+        "banana": 7
     },
     "super rare": {
-        "cheese": "8",
-        "chicken soup": "9"
+        "cheese": 8,
+        "chicken soup": 9
     },
     "epic": {
-        "cake": "10",
-        "chocolate": "11",
-        "whole cheese wheel": "11"
+        "cake": 10,
+        "chocolate": 11,
+        "whole cheese wheel": 11
     },
     "legendary": {
-        "pizza": "12",
-        "melon": "13"
+        "pizza": 12,
+        "melon": 13
     }
 }
